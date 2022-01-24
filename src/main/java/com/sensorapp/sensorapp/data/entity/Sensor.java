@@ -13,7 +13,7 @@ public class Sensor {
     @Column(name = "sensor_id")
     private int id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String name;
 
     @Column(name = "register_date", nullable = false)
