@@ -2,7 +2,7 @@ package com.sensorapp.sensorapp.data.repository.entity;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "sensors")
@@ -22,6 +22,16 @@ public class Sensor {
     @Column(name = "active", nullable = false)
     private boolean active;
 
+    @OneToMany(mappedBy = "sensor", cascade = CascadeType.ALL ,fetch = FetchType.LAZY)
+    private Set<SensorData> sensorData;
+
+    public Set<SensorData> getSensorData() {
+        return sensorData;
+    }
+
+    public void setSensorData(Set<SensorData> sensorData) {
+        this.sensorData = sensorData;
+    }
 
     public int getId() {
         return id;
@@ -55,26 +65,6 @@ public class Sensor {
         this.active = active;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Sensor sensor = (Sensor) o;
-        return id == sensor.id && active == sensor.active && name.equals(sensor.name) && Objects.equals(registerDate, sensor.registerDate);
-    }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, name, registerDate, active);
-    }
 
-    @Override
-    public String toString() {
-        return "Sensor{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", registerDate=" + registerDate +
-                ", active=" + active +
-                '}';
-    }
 }
