@@ -1,6 +1,4 @@
-package com.sensorapp.sensorapp.data.repository.entity;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+package com.sensorapp.sensorapp.data.entity;
 
 import javax.persistence.*;
 import java.time.LocalDate;

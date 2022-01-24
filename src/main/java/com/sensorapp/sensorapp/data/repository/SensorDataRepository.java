@@ -1,0 +1,11 @@
+package com.sensorapp.sensorapp.data.repository;
+
+import com.sensorapp.sensorapp.data.entity.SensorData;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface SensorDataRepository extends JpaRepository<SensorData, Long> {
+
+
+}

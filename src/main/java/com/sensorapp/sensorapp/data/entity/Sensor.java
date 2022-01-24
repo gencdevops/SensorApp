@@ -1,4 +1,4 @@
-package com.sensorapp.sensorapp.data.repository.entity;
+package com.sensorapp.sensorapp.data.entity;
 
 import javax.persistence.*;
 import java.time.LocalDate;
