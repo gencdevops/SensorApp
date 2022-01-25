@@ -25,6 +25,7 @@ public class SensorAppService {
                 .map(func)
                 .collect(Collectors.toList());
     }
+    
 
     private Optional<SensorDTO> findSensorByNameCallback(String name) {
         var optSensor = sensorServiceHelper.findSensorByName(name);
