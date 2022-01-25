@@ -15,6 +15,7 @@ public class SensorData {
     @Column(nullable = false)
     private double value;
 
+    //MapStructla Jsona cevirildi
     @Column(name = "read_date_time", nullable = false)
     private LocalDate readDateTime;
 
