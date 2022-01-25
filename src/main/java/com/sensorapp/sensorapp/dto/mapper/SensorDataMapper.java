@@ -13,6 +13,6 @@ public interface SensorDataMapper {
     SensorDataDTO toSensorDataDTO(SensorData sensorData);
 
     @Mapping(source = "data", target = "value")
-    @Mapping(source = "dataDateTime", target = "readDatetime", dateFormat = "dd/MM/yyyy hh:mm:ss")// entity icerisinde LocalDate time olan readDateTime "dateFormat" ile Dto icerisindeki String ifadeye cevirildi
+    @Mapping(source = "dataDateTime", target = "readDateTime", dateFormat = "dd/MM/yyyy hh:mm:ss")// entity icerisinde LocalDate time olan readDateTime "dateFormat" ile Dto icerisindeki String ifadeye cevirildi
     SensorData toSensorData(SensorDataDTO sensorDataDTO);
 }
