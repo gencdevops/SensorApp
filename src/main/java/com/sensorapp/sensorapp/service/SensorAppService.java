@@ -4,6 +4,7 @@ import com.sensorapp.sensorapp.data.dal.SensorServiceHelper;
 import com.sensorapp.sensorapp.dto.SensorDTO;
 import com.sensorapp.sensorapp.dto.mapper.SensorDataMapper;
 import com.sensorapp.sensorapp.dto.mapper.SensorMapper;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -26,6 +27,9 @@ public class SensorAppService {
                 .collect(Collectors.toList());
     }
 
+    private List<SensorDTO> findAllSensorsCallback() {
+        return mapToList(sensorServiceHelper.findAllSensors(), sensorMapper::toSensorDTO, true);
+    }
 
     private Optional<SensorDTO> findSensorByNameCallback(String name) {
         var optSensor = sensorServiceHelper.findSensorByName(name);
@@ -52,6 +56,10 @@ public class SensorAppService {
        return doWorkForService(() -> findSensorByNameContainsCallback(text), "SensorAppService.findSensorByNameContains");
    }
 
+   @Profile("dev")
+    public List<SensorDTO> findAllSensors() {
+        return doWorkForService(this::findAllSensorsCallback, "SensorAppService.findAllSensors");
+   }
 
 
 }

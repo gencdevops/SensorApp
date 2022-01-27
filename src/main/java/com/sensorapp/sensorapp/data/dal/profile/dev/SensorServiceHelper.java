@@ -1,4 +1,4 @@
-package com.sensorapp.sensorapp.data.dal;
+package com.sensorapp.sensorapp.data.dal.profile.dev;
 
 import com.sensorapp.sensorapp.data.entity.Sensor;
 import com.sensorapp.sensorapp.data.repository.SensorDataRepository;
@@ -8,9 +8,10 @@ import org.springframework.stereotype.Component;
 
 import java.util.Optional;
 
-import static org.csystem.util.data.DatabaseUtil.*;
+import static org.csystem.util.data.DatabaseUtil.doWorkForRepository;
 
-@Component
+@Component("dev.sensorServiceHelper")
+@Profile("dev")
 public class SensorServiceHelper {
     private final SensorRepository sensorRepository;
     private final SensorDataRepository sensorDataRepository;
