@@ -2,9 +2,9 @@ package com.sensorapp.sensorapp.controller;
 
 import com.sensorapp.sensorapp.dto.SensorDTO;
 import com.sensorapp.sensorapp.dto.SensorInfoNotFoundDto;
+import com.sensorapp.sensorapp.dto.SensorsDTO;
 import com.sensorapp.sensorapp.service.SensorAppService;
 import org.springframework.context.annotation.Profile;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -38,6 +38,10 @@ public class SensorController {
     return sensorAppService.findSensorByNameContains(text);
     }
 
+    @GetMapping("/sensor/contains/contains")
+    public SensorsDTO findSensorsByNameContainsDetail(String text) {
+        return sensorAppService.findSensorByNameContainsDetail(text);
+    }
 
 
 }

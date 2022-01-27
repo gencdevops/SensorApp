@@ -2,6 +2,7 @@ package com.sensorapp.sensorapp.service;
 
 import com.sensorapp.sensorapp.data.dal.SensorServiceHelper;
 import com.sensorapp.sensorapp.dto.SensorDTO;
+import com.sensorapp.sensorapp.dto.SensorsDTO;
 import com.sensorapp.sensorapp.dto.mapper.SensorDataMapper;
 import com.sensorapp.sensorapp.dto.mapper.SensorMapper;
 import org.springframework.context.annotation.Profile;
@@ -37,6 +38,11 @@ public class SensorAppService {
 
     }
 
+    private SensorsDTO findSensorByNameContainsCallbackDetail(String text) {
+        return sensorMapper.toSensorsDTO(
+                mapToList(sensorServiceHelper.findSensorByNameContains(text), sensorMapper::toSensorDTO, false));
+    }
+
     private List<SensorDTO> findSensorByNameContainsCallback(String text) {
         return mapToList(sensorServiceHelper.findSensorByNameContains(text), sensorMapper::toSensorDTO, false);
     }
@@ -55,6 +61,10 @@ public class SensorAppService {
    public Iterable<SensorDTO> findSensorByNameContains(String text) {
        return doWorkForService(() -> findSensorByNameContainsCallback(text), "SensorAppService.findSensorByNameContains");
    }
+
+    public SensorsDTO findSensorByNameContainsDetail(String text) {
+        return doWorkForService(() -> findSensorByNameContainsCallbackDetail(text), "SensorAppService.findSensorByNameContainsDetail");
+    }
 
    @Profile("dev")
     public List<SensorDTO> findAllSensors() {
