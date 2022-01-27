@@ -1,8 +1,11 @@
 package com.sensorapp.sensorapp.dto;
 
+import java.util.Set;
+
 public class SensorDataDTO {
     private double data;
     private String dataDateTime;
+
 
     public double getData() {
         return data;

@@ -21,25 +21,29 @@ public class SensorController {
         this.sensorAppService = sensorAppService;
     }
 
-    @GetMapping("/sensor/name")
-    public Object findSensorByName(String name) {
-        var optSensor = sensorAppService.findSensorByName(name);
-    return optSensor.isPresent() ? optSensor : new SensorInfoNotFoundDto(name , "Sensor not found");
-    }
-
-    @GetMapping("/sensor/all")
-    @Profile("dev")
-    public List<SensorDTO> findAllSensors() {
+    @GetMapping("sensor/all")
+    public List<SensorDTO> findAllSensors()
+    {
         return sensorAppService.findAllSensors();
     }
 
-    @GetMapping("/sensor/contains")
-    public Iterable<SensorDTO> findSensorsByNameContains(String text) {
-    return sensorAppService.findSensorByNameContains(text);
+    @GetMapping("sensor/name")
+    public Object findSensorByName(String name)
+    {
+        var so = sensorAppService.findSensorByName(name);
+
+        return so.isPresent() ? so : new SensorInfoNotFoundDto(name, "Sensor not found");
     }
 
-    @GetMapping("/sensor/contains/contains")
-    public SensorsDTO findSensorsByNameContainsDetail(String text) {
+    @GetMapping("sensor/contains")
+    public Iterable<SensorDTO> findSensorsByNameContains(String text)
+    {
+        return sensorAppService.findSensorByNameContains(text);
+    }
+
+    @GetMapping("sensor/detail/contains")
+    public SensorsDTO findSensorsByNameContainsDetail(String text)
+    {
         return sensorAppService.findSensorByNameContainsDetail(text);
     }
 

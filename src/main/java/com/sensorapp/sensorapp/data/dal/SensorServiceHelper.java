@@ -20,17 +20,19 @@ public class SensorServiceHelper {
         this.sensorDataRepository = sensorDataRepository;
     }
 
-    @Profile("dev")
-    public Iterable<Sensor> findAllSensors() { // ileride webflux olacak
-    return doWorkForRepository(sensorRepository::findAll, "SensorServiceHelper.findAllSensors");
+    public Iterable<Sensor> findAllSensors() //İleride asenkron yapılacak
+    {
+        return doWorkForRepository(sensorRepository::findAll, "SensorServiceHelper.findAllSensors");
     }
 
-    public Optional<Sensor> findSensorByName(String name) {
-       return doWorkForRepository(() -> sensorRepository.findByName(name) , "SensorServiceHelper.findSensorByName");
+    public Optional<Sensor> findSensorByName(String name)
+    {
+        return doWorkForRepository(() -> sensorRepository.findByName(name), "SensorServiceHelper.findSensorByName");
     }
 
-    public Iterable<Sensor> findSensorByNameContains(String text) {
-        return doWorkForRepository(() -> sensorRepository.findByNameContains(text) , "SensorServiceHelper.findSensorByNameContains");
+    public Iterable<Sensor> findSensorByNameContains(String text)
+    {
+        return doWorkForRepository(() -> sensorRepository.findByNameContains(text), "SensorServiceHelper.findSensorByNameContains");
     }
 
 }
